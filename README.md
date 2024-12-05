@@ -1,16 +1,14 @@
 # Interactly Web SDK
 
-This package lets you listen to events in calls directly in your webapp.
+This package lets you make calls directly to Interactly in your webapp.
 
 
-## Usage
+## Installation
 
 
-First, Add it in dependencies
+Install the package:
 ```json
-"dependencies": {
-        "@interactly-ai/web": "file:../client-sdk-web",
-}
+$ npm i @interactly-ai/web
 ```
 
 Import the Interactly class from the package:
@@ -22,27 +20,26 @@ import Interactly from '@interaclty-ai/web';
 Then, create a new instance of the Interactly class, passing your Public Key as a parameter to the constructor:
 
 ```javascript
-const Interactly = new Interactly('your-public-key', 'api-base-url');
+const Interactly = new Interactly({
+  apiToken: 'your-api-token',
+  server: 'server-base-url'
+});
 ```
 
-You can start a listening to a call by calling the `start` method and passing an `callSid`:
+You can start a call by calling the `start` method and passing an `assistant`:
+
 
 ```javascript
-Interactly.start('your-callSid');
+await Interactly.start('your-assistant-id');
 ```
+
+You can stop the call by calling the `stop` method:
 
 ```javascript
-
-Interactly.start('your-assistant-id');
+await Interactly.stop();
 ```
 
-You can stop the session by calling the `stop` method:
-
-```javascript
-Interactly.stop();
-```
-
-This will stop the events listening and close the connection.
+This will stop the events listening and close the call session.
 
 
 ## Events
@@ -60,7 +57,7 @@ Interactly.on('call-end', () => {
 });
 
 
-// Function calls and transcripts will be sent via messages
+// Assistant messages and transcripts will be sent via messages
 Interactly.on('message', (message) => {
   console.log(message);
 });
