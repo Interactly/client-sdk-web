@@ -1,6 +1,6 @@
 # Interactly Web SDK
 
-This package lets you listen to events in calls directly in your webapp.
+This package lets you make calls directly to Interactly in your webapp.
 
 
 ## Installation
@@ -26,20 +26,20 @@ const Interactly = new Interactly({
 });
 ```
 
-You can start a listening to a call by calling the `start` method and passing an `assistant`:
+You can start a call by calling the `start` method and passing an `assistant`:
 
 
 ```javascript
 await Interactly.start('your-assistant-id');
 ```
 
-You can stop the session by calling the `stop` method:
+You can stop the call by calling the `stop` method:
 
 ```javascript
 await Interactly.stop();
 ```
 
-This will stop the events listening and close the connection.
+This will stop the events listening and close the call session.
 
 
 ## Events
